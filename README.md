@@ -25,7 +25,7 @@ This next image takes a look at our alerts tab. Here we can see all 8 of our ale
 
 ![image](https://github.com/user-attachments/assets/6df9f37c-70c8-40da-82cc-8e8d7bfdca0e)
 
-This image focuses on the entity tab. We can see that we have 10 total, 1 host (windows-vm) and 9 attacker IP addresses. Here we can see that many of the IPs are similar and might come from the same region. The next step is to analyze the logs created by these alerts. We will go to our Log Analytics Workspace to query those logs.
+This image focuses on the entity tab. We can see that we have 10 total, 1 host (windows-vm) and 9 IP addresses. Here we can see that many of the IPs are similar and might come from the same region. The next step is to analyze the logs created by these alerts. We will go to our Log Analytics Workspace to query those logs.
 
 ![image](https://github.com/user-attachments/assets/979c045e-35ef-4f65-a4b6-161e0bb63857)
 
@@ -63,13 +63,23 @@ The image above shows how to make an inbound rule using CIDR notation. The IP ad
 
 In this image we can see that we only needed to make 4 inbound rules for all 8 entities in this incident. IP ranges with CIDR can streamline remediation and make things more efficient. All of the rules created have a DENY action on all connection attempts It's also important to have the appropriate priortiy level with security rules so that a rule is not bypassed by another.
 
-<!--
-
 ![image](https://github.com/user-attachments/assets/b1b3e750-81c1-4da9-b460-b580b120f365)
 
-This image is from the close out of the incident. This is where to document all of our findings and close the incident
+This is where we can close out the incident and document our findings. 
+
+In this case it was a True Positive - Suspicious Activity. 
+
+Many attempts were made to RDP into the host (windows-vm), in a short time period (7:50pm-11:05pm). 
+
+Many of the IP addresses were from the same area of the world (Russia & Poland). Suspicious locations in terms of who should be accessing this machine.
+
+Further analysis on sites such as [VirusTotal](https://www.virustotal.com/gui/home/upload) can tell you much more about an IP address, URL, domain or hash. 
 
 
+
+<!--
+
+It will also provide connections and correlation info?
 
 
 ### Incident Response Actions
@@ -87,9 +97,6 @@ Reset the affected uer's password.
 Enable MFA.
 
 ### Document Findings and Close out Incident
-
-![image](https://github.com/user-attachments/assets/da9fc6b3-cc13-43df-865c-d1a59dbd2a8e)
-Before investigating the attacker IPs, we want to see if there are any correlations to other incidents or entities on the network. In this image, we see our 10 entites from this incident and 
 
 I think it is important to use multiple tools and sources to provide the best scope?
 
